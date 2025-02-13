@@ -19,8 +19,21 @@ namespace RegEx
             Console.WriteLine("Matches: " + matches.Count);
 
             string text2 = "My SSNs are 123-45-6789, 222-33-4567, 888-43-5675";
+            MatchCollection matches2 = regex.Matches(text2);
 
             Console.WriteLine("Matches: " + regex.Matches(text2).Count);
+
+            foreach (Match match in matches)
+            {
+                Console.WriteLine(match.Value); 
+            }
+
+            foreach (Match match in matches2)
+            {
+                //finding the groups and where they're found
+                GroupCollection groups = match.Groups;
+                Console.WriteLine($"{groups[0].Value} found at {groups[0].Index}. Matches found: {matches2.Count}");
+            }
         }
     }
 }
